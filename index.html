@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Fire Diamantes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #111111);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #1c1c1c;
+      border: 1px solid #00ffff44;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #00ffff33;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+    }
+
+    input, select {
+      background: #111;
+      color: #00ffff;
+      border: 1px solid #00ffff55;
+    }
+
+    button {
+      background: #00ffff;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .loading, .success {
+      margin-top: 20px;
+      font-size: 18px;
+      display: none;
+    }
+
+    .spinner {
+      border: 4px solid #00ffff44;
+      border-top: 4px solid #00ffff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Diamantes</h1>
+    <input type="text" id="playerId" placeholder="Digite seu ID do Free Fire">
+    <select id="diamonds">
+      <option value="" disabled selected>Escolha a quantidade</option>
+      <option value="100">100 Diamantes</option>
+      <option value="530">530 Diamantes</option>
+      <option value="1060">1060 Diamantes</option>
+      <option value="2180">2180 Diamantes</option>
+      <option value="5600">5600 Diamantes</option>
+    </select>
+    <button onclick="startFakeProcess()">Enviar Diamantes</button>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      Enviando diamantes para o ID...
+    </div>
+
+    <div class="success" id="success">
+      ✅ Diamantes enviados com sucesso!
+    </div>
+  </div>
+
+  <script>
+    function startFakeProcess() {
+      const id = document.getElementById('playerId').value.trim();
+      const qty = document.getElementById('diamonds').value;
+      const loading = document.getElementById('loading');
+      const success = document.getElementById('success');
+
+      if (!id || !qty) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      loading.style.display = 'block';
+      success.style.display = 'none';
+
+      setTimeout(() => {
+        loading.style.display = 'none';
+        success.innerText = `✅ ${qty} diamantes enviados para o ID ${id}!`;
+        success.style.display = 'block';
+      }, 3000);
+    }
+  </script>
+</body>
+  </html>
